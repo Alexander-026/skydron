@@ -1,0 +1,46 @@
+@import "./variables";
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    &__top {
+        display: flex;
+    }
+
+    &__top-left {
+        width: 590px;
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #000;
+    }
+
+    &__logo {
+        font-size: 30px;
+        font-weight: 700;
+        color: $color-blue;
+    }
+
+    &__list-city {
+    }
+
+    &__link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        a{
+            margin-left: 5px;
+        }
+    }
+
+    &__top-right {
+    }
+
+    &__basket {
+    }
+
+    &__area {
+    }
+}

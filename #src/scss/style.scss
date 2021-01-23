@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import "mixins";
+@import "variables";
+@import "fonts";
+
+
+body{
+    @include state-body($body-font-family, $body-color, $body-font-size);
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+.material-icons{
+    font-size: 15px;
+}
+
+.container {
+    max-width: 1070px;
+    margin: 0 auto;
+    
+}
+
+
+
+@import "./homepace/homepace.scss";
+
+
