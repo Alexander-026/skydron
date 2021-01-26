@@ -14,3 +14,10 @@
     color: $color;
     font-size: $font-size;
 }
+
+
+@mixin flex($flex, $content, $aling-items) {
+    display: $flex;
+    justify-content: $content;
+    align-items: $aling-items;
+}
