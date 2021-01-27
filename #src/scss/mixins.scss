@@ -9,12 +9,12 @@
 }
 
 
-@mixin state-body($font-name, $color, $font-size){
+@mixin state-body($font-name, $color, $font-size, $f-weight){
     font-family: $font-name;
     color: $color;
     font-size: $font-size;
+    font-weight:  $f-weight;
 }
-
 
 @mixin flex($flex, $content, $aling-items) {
     display: $flex;

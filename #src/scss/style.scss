@@ -10,7 +10,7 @@
 
 
 body{
-    @include state-body($body-font-family, $body-color, $body-font-size);
+    @include state-body($body-font-family, $body-color, $body-font-size, $body-font-weight);
 }
 
 a{

@@ -17,7 +17,15 @@
   font-family: "Gilroy";
   font-display: swap;
   src: url("../fonts/Gilroy-Light.woff") format("woff"), url("../fonts/Gilroy-Light.woff2") format("woff2");
-  font-weight: 500;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  font-display: swap;
+  src: url("../fonts/Gilroy-Regular.woff") format("woff"), url("../fonts/Gilroy-Regular.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -25,6 +33,7 @@ body {
   font-family: "Gilroy";
   color: #000;
   font-size: 15px;
+  font-weight: 300;
 }
 
 a {
@@ -40,6 +49,10 @@ a {
   max-width: 1100px;
   padding: 0 15px 0 15px;
   margin: 0 auto;
+}
+
+.border {
+  border: 1px solid red;
 }
 
 .header {
@@ -211,6 +224,8 @@ a {
 
 .header__bottom {
   border-top: 1px solid #dedede;
+  -webkit-box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
+          box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
 .header__bottom .container {
@@ -308,7 +323,6 @@ a {
 }
 
 .header__bottom .header__bottom-left .search-container .search-width {
-  z-index: 1;
   width: 70px;
   position: relative;
   -webkit-box-pack: center;
@@ -329,6 +343,7 @@ a {
   border-radius: 50px 50px 10px 50px;
   border: 1px solid gray;
   width: 100%;
+  color: #fff;
 }
 
 .header__bottom .header__bottom-left .search-container .search-width.active {
@@ -337,6 +352,7 @@ a {
 
 .header__bottom .header__bottom-left .search-container .search-width.active .fa-search {
   right: 10px;
+  color: #1F72CC;
 }
 
 .header__bottom .header__bottom-left .search-container .search-width.active .search {
@@ -344,6 +360,7 @@ a {
   font-size: 16px;
   color: #1F72CC;
   padding: 0 30px 0 10px;
+  border: 1px solid #1F72CC;
 }
 
 .header__bottom .header__bottom-left .search-container .search-width:hover .search {
@@ -359,17 +376,17 @@ a {
 }
 
 .header__bottom .header__bottom-right .nav-list {
+  height: 49px;
+  list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 49px;
-  list-style: none;
 }
 
 .header__bottom .header__bottom-right .nav-item {
@@ -377,7 +394,39 @@ a {
 }
 
 .header__bottom .header__bottom-right .nav-link {
+  position: relative;
   font-size: 14px;
-  color: #1F72CC;
+  color: #000;
   text-transform: uppercase;
+}
+
+.header__bottom .header__bottom-right .nav-link::after {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  -webkit-transform: translateX(-50%) scaleX(0);
+      -ms-transform: translateX(-50%) scaleX(0);
+          transform: translateX(-50%) scaleX(0);
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  height: 2px;
+  background: #1F72CC;
+  -webkit-transition: -webkit-transform .2s;
+  transition: -webkit-transform .2s;
+  -o-transition: transform .2s;
+  transition: transform .2s;
+  transition: transform .2s, -webkit-transform .2s;
+}
+
+.header__bottom .header__bottom-right .nav-link:hover::after {
+  -webkit-transform: translateX(-50%) scaleX(1);
+      -ms-transform: translateX(-50%) scaleX(1);
+          transform: translateX(-50%) scaleX(1);
+}
+
+.header__bottom .header__bottom-right .nav-link:hover {
+  color: #1F72CC;
 }

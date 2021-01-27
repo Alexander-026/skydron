@@ -1,5 +1,8 @@
 
 @import "./variables";
+.border{
+    border: 1px solid red;
+}
 
 .header {
     position: fixed;
@@ -175,9 +178,8 @@
     //? ===================== Header Bottom ========================
 
     &__bottom {
-
         border-top: 1px solid #dedede;
-
+        box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
         .container {
             display: flex;
         }
@@ -255,9 +257,7 @@
                 width: 250px;
 
                 .search-width {
-                    z-index: 1;
                     width: 70px;
-                   
                     position: relative;
                     .fa-search{
                         font-size: 20px;
@@ -277,18 +277,21 @@
                     border-radius: 50px 50px 10px 50px;
                     border: 1px solid $color-gray;
                     width: 100%;
+                    color: $color-white;
                 }
 
                 .search-width.active {
                     width: 80%;
                     .fa-search {
                       right: 10px;
+                      color: $color-blue;
                     }
                     .search {
                         font-weight: 600;
                         font-size: 16px;
                         color: $color-blue;
                         padding: 0 30px 0 10px;
+                        border: 1px solid $color-blue;
                     }
                 }
 
@@ -309,17 +312,39 @@
         .header__bottom-right {
             width: 50%;
             .nav-list{
-                @include flex(flex, flex-end, center);
                 height: 49px;
                 list-style: none;
+                @include flex(flex, center, center);
             }
             .nav-item{
                 margin-right: 10px;
             }
             .nav-link {
+                position: relative;
                 font-size: 14px;
-                color: $color-blue;
+                color: $color-black;
                 text-transform: uppercase;
+
+                &::after {
+                    position: absolute;
+                    content: '';
+                    bottom: 0;
+                    left: 50%;
+                    width: 100%;
+                    transform: translateX(-50%) scaleX(0);
+                    transform-origin: 50% 50% ;
+                    height: 2px;
+                    background: $color-blue;
+                    transition: transform .2s;
+                }
+
+                &:hover::after{
+                    
+                    transform: translateX(-50%) scaleX(1);
+                }
+                &:hover {
+                    color: $color-blue;
+                }
             }
         }
     }
