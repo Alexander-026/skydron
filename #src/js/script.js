@@ -1,7 +1,15 @@
 //? Btn catalog, create burger menu and show menu 
 "use strict"
 const btnCatalog = document.querySelector('.btn-catalog')
-btnCatalog.addEventListener('click', () => btnCatalog.classList.toggle('active') )
+const headerBottom = document.querySelector('.header__bottom')
+const dropdownCatalog = document.querySelector('.header__dropdown-catalog')
+
+btnCatalog.addEventListener('click', () => btnCatalogAction() )
+function btnCatalogAction() {
+    btnCatalog.classList.toggle('active')
+    headerBottom.classList.toggle('active')
+    dropdownCatalog.classList.toggle('active')
+}
     
 
 

@@ -1,15 +1,20 @@
-
 @import "./variables";
-.border{
+
+.border {
     border: 1px solid red;
 }
 
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    font-weight: 700;
+    position: relative;
+    &__inner {
+        z-index: 1000;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        font-weight: 700;
+        background: $color-white;
+    }
 
     //? ==================== global-header styles ====================
 
@@ -38,16 +43,20 @@
     .fa-phone,
     .header__basket,
     .header__area,
-    .search-width {
+    .search-width,
+    .header__bottom,
+    .header__dropdown-catalog {
         transition: all .2s linear;
     }
 
     &__top,
     &__top-left,
-    &__top-right
-   {
+    &__top-right {
         @include flex(flex, space-between, center);
     }
+
+    
+    
 
 
     .link-phone,
@@ -65,8 +74,10 @@
     &__top,
     &__bottom {
         position: relative;
-        padding: 30px 0;
+        height: $header-top-bottom-height;
     }
+
+
 
 
     //? ==================== global-header styles ====================
@@ -180,8 +191,11 @@
     &__bottom {
         border-top: 1px solid #dedede;
         box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
+        @include flex(flex, center, center);
+
         .container {
-            display: flex;
+           @include flex(flex, center, center);
+           width: 100%;
         }
 
 
@@ -191,13 +205,15 @@
 
             //? ============= Btn - catalog ====================
             .btn-catalog {
+                align-items: center;
                 border-radius: 50px 50px 50px 10px;
                 padding: 16px 27px;
                 color: $color-white;
                 font-weight: 400;
                 background: $color-blue;
                 cursor: pointer;
-                &:hover{
+
+                &:hover {
                     background: #06509f;
                 }
             }
@@ -224,24 +240,30 @@
             .btn-catalog__burger::after {
                 bottom: -6px;
             }
-            .btn-catalog{
+
+            .btn-catalog {
+
                 .btn-catalog__burger::before,
                 .btn-catalog__burger::after {
                     transition: all .1s linear;
                 }
             }
+
             .btn-catalog.active {
                 .btn-catalog__burger {
                     height: 0;
                 }
+
                 .btn-catalog__burger::before,
-                .btn-catalog__burger::after{
+                .btn-catalog__burger::after {
                     top: -1px;
                     transition: all .1s linear;
                 }
+
                 .btn-catalog__burger::before {
                     transform: rotate(45deg);
                 }
+
                 .btn-catalog__burger::after {
                     transform: rotate(-45deg);
                 }
@@ -253,20 +275,22 @@
 
             //? ================== serch - btn ======================
             .search-container {
-               
+
                 width: 250px;
 
                 .search-width {
                     width: 70px;
                     position: relative;
-                    .fa-search{
+
+                    .fa-search {
                         font-size: 20px;
                     }
+
                     justify-content: center;
-                  
+
                 }
 
-               
+
 
                 .fa-search {
                     position: absolute;
@@ -282,10 +306,12 @@
 
                 .search-width.active {
                     width: 80%;
+
                     .fa-search {
-                      right: 10px;
-                      color: $color-blue;
+                        right: 10px;
+                        color: $color-blue;
                     }
+
                     .search {
                         font-weight: 600;
                         font-size: 16px;
@@ -297,13 +323,14 @@
 
 
                 .search-width {
-                    &:hover{
-                        .search{
+                    &:hover {
+                        .search {
                             border: 1px solid $color-blue;
                         }
-                        .fa-search{
+
+                        .fa-search {
                             color: $color-blue;
-                        } 
+                        }
                     }
                 }
             }
@@ -311,14 +338,16 @@
 
         .header__bottom-right {
             width: 50%;
-            .nav-list{
+            .nav-list {
                 height: 49px;
                 list-style: none;
-                @include flex(flex, center, center);
+                @include flex(flex, flex-end, center);
             }
-            .nav-item{
+
+            .nav-item {
                 margin-right: 10px;
             }
+
             .nav-link {
                 position: relative;
                 font-size: 14px;
@@ -332,19 +361,199 @@
                     left: 50%;
                     width: 100%;
                     transform: translateX(-50%) scaleX(0);
-                    transform-origin: 50% 50% ;
+                    transform-origin: 50% 50%;
                     height: 2px;
                     background: $color-blue;
                     transition: transform .2s;
                 }
 
-                &:hover::after{
-                    
+                &:hover::after {
+
                     transform: translateX(-50%) scaleX(1);
                 }
+
                 &:hover {
                     color: $color-blue;
                 }
+            }
+        }
+    }
+
+    &__bottom.active {
+        border-top: 1px solid transparent;
+        transition: all .2s;
+        box-shadow: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: $color-blue;
+
+        .btn-catalog {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid transparent;
+
+            &:hover {
+                border: 1px solid $color-white;
+            }
+        }
+
+        .search-container {
+            .search-width {
+                .search {
+                    border: 1px solid transparent;
+                    color: transparent;
+                    background: rgba(255, 255, 255, 0.1);
+                }
+
+                .fa-search {
+                    color: $color-white;
+                }
+            }
+
+            .search-width.active {
+
+                .fa-search,
+                .search {
+                    color: $color-white;
+                }
+
+                .search {
+                    border: 1px solid $color-white;
+                }
+            }
+
+            .search-width {
+                &:hover {
+                    .search {
+                        border: 1px solid $color-white;
+                    }
+
+                    .fa-search {
+                        color: $color-white;
+                    }
+                }
+            }
+        }
+
+        .container {
+            .header__bottom-right {
+                .header__nav {
+                    .nav-list {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .header__dropdown-catalog {
+        opacity: 0;
+        .container-grid {
+            display: none;
+        }
+    }
+
+    .header__dropdown-catalog.active {
+        position: absolute;
+        z-index: 999;
+        height: 100vh;
+        width: 100%;
+        font-weight: 700;
+        padding-top: $header-top-bottom-height * 2 + 50px;
+        transition: all .2s;
+        opacity: 1;
+       
+        background: $color-blue;
+
+        .container-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 30px;
+            margin-bottom: 30px;
+            grid-auto-rows: minmax(200px, auto);
+
+            .grid-item {
+                position: relative;
+                padding: 30px 0 0 30px;
+                background: $color-white;
+
+                .grid-title {
+                    font-weight: 400;
+                    font-size: 30px;
+                }
+
+                .item-link {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .grid-item:nth-child(1) {
+                grid-column: 1;
+                grid-row: 1 / 3;
+            }
+
+            .grid-item:nth-child(2),
+            .grid-item:nth-child(4) {
+                background-repeat: no-repeat;
+                background-position: right bottom;
+            }
+
+            .grid-item:nth-child(2) {
+               
+                background-image: url(https://dronov.ru/wp-content/themes/skydron/assets/img/c1.png);
+            }
+            .grid-item:nth-child(4) {
+                 background-image: url(https://dronov.ru/wp-content/themes/skydron/assets/img/c2.png);
+            }
+
+            .grid-list {
+                list-style: none;
+                left: 34px;
+
+                .grid-list-item {
+                    margin-top: 20px;
+                }
+            }
+
+            .grid-link {
+                color: $color-blue;
+                position: relative;
+
+                &::after {
+                    position: absolute;
+                    content: '';
+                    bottom: 0;
+                    left: 50%;
+                    width: 100%;
+                    transform: translateX(-50%) scaleX(0);
+                    transform-origin: 50% 50%;
+                    height: 2px;
+                    background: $color-blue;
+                    transition: transform .2s;
+                }
+
+                &:hover::after {
+
+                    transform: translateX(-50%) scaleX(1);
+                }
+
+            }
+        }
+
+        .btn-wrapper {
+            @include flex(flex, center, center);
+            .btn-more {
+                color: $color-white;
+                border-radius: 50px 50px 50px 10px !important;
+                padding: 16px 27px;
+                background: rgba(255, 255, 255, 0.1);
+                transition: background .2s;
+                &:hover {
+                    background: #06509f;
+
+                }
+
             }
         }
     }
