@@ -558,3 +558,31 @@
         }
     }
 }
+
+
+
+
+
+.modalWindow.active{
+    z-index: 100000000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.318);
+    .modalWindow__inner {
+        width: 1000px;
+        height: 300px;
+        background:#fff;
+        text-align: center;
+        font-size: 30px;
+        text-transform: uppercase;
+    }
+}
+
+
+

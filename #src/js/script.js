@@ -13,14 +13,51 @@ function btnCatalogAction() {
     
 
 
-//? Btn search if click that show input serch
+//? Btn search if onmouseenter that show input serch
 const btnShowSearch = document.querySelector('.search-width')
-function showSearch() {
-    btnShowSearch.classList.toggle('active')
+let t
+
+function hidden() {
+    btnShowSearch.classList.remove('active')
 }
-btnShowSearch.onclick = function() {
+
+function hiddenSearch() {
+    t = setTimeout(hidden, 2000)
+}
+
+function showSearch() {
+    clearTimeout(t);
+    btnShowSearch.classList.add('active')
+}
+
+btnShowSearch.onmouseleave = function() {
+    hiddenSearch()
+}
+
+btnShowSearch.onmouseenter = function(event) {
+    event.target.oninput = function () {
+        let $el = event.target.querySelector('.search').value
+        document.querySelector('.modalWindow__text').innerHTML =  $el + '  Люблю Анька моя !!!!!!'
+        console.log($el)
+        showSearch()
+    }
+    event.target.onkeyup = function(event) {
+        if(event.keyCode == 13){
+            event.preventDefault();
+            document.querySelector('.modalWindow').classList.add('active')
+           
+        }
+    }
+    
     showSearch()
 }
+
+
+
+
+
+
+
 
 
 
