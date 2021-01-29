@@ -3,14 +3,35 @@
 const btnCatalog = document.querySelector('.btn-catalog')
 const headerBottom = document.querySelector('.header__bottom')
 const dropdownCatalog = document.querySelector('.header__dropdown-catalog')
-
-btnCatalog.addEventListener('click', () => btnCatalogAction() )
+const html = document.querySelector('html')
+const body = document.querySelector('body')
+const elements = [btnCatalog, headerBottom, dropdownCatalog, html, body]
+btnCatalog.addEventListener('click', () => btnCatalogAction())
+const el = document.querySelector(".bottom__wrapper > .container");
+const el2 = document.querySelector(".header__inner > .container");
+const el3 = document.querySelector(".header__dropdown-catalog > .container");
+const getprop = window.getComputedStyle(el, null).getPropertyValue("margin-right");
+let startState = document.documentElement.clientWidth
 function btnCatalogAction() {
-    btnCatalog.classList.toggle('active')
-    headerBottom.classList.toggle('active')
-    dropdownCatalog.classList.toggle('active')
+    elements.forEach(e => e.classList.toggle('active'))
+    let changeState = document.documentElement.clientWidth;
+    let newState = changeState - startState
+    let gg = getprop
+    let ll = Number(gg.slice(0, -2)) + newState
+    el.style.marginRight = ll + 'px'
+    el2.style.marginRight = ll + 'px'
+    el3.style.marginRight = ll + 'px'
 }
-    
+
+
+
+console.log()
+
+window.onclick = e => {
+    console.log(e)
+}
+
+
 
 
 //? Btn search if onmouseenter that show input serch
@@ -30,55 +51,24 @@ function showSearch() {
     btnShowSearch.classList.add('active')
 }
 
-btnShowSearch.onmouseleave = function() {
+btnShowSearch.onmouseleave = function () {
     hiddenSearch()
 }
 
-btnShowSearch.onmouseenter = function(event) {
+btnShowSearch.onmouseenter = function (event) {
     event.target.oninput = function () {
-        let $el = event.target.querySelector('.search').value
-        document.querySelector('.modalWindow__text').innerHTML =  $el + '  Люблю Анька моя !!!!!!'
-        console.log($el)
+        //let $el = event.target.querySelector('.search').value
+        //document.querySelector('.modalWindow__text').innerHTML =  $el + '  Люблю Анька моя !!!!!!'
+        //console.log($el)
         showSearch()
     }
-    event.target.onkeyup = function(event) {
-        if(event.keyCode == 13){
+    event.target.onkeyup = function (event) {
+        if (event.keyCode == 13) {
             event.preventDefault();
-            document.querySelector('.modalWindow').classList.add('active')
-           
+
+
         }
     }
-    
+
     showSearch()
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-

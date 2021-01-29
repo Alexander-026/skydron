@@ -6,6 +6,7 @@
 
 .header {
     position: relative;
+
     &__inner {
         z-index: 1000;
         position: fixed;
@@ -55,8 +56,8 @@
         @include flex(flex, space-between, center);
     }
 
-    
-    
+
+
 
 
     .link-phone,
@@ -67,6 +68,9 @@
     .search-width {
         @include flex(flex, start, center);
     }
+
+
+    
 
 
 
@@ -191,13 +195,16 @@
     &__bottom {
         border-top: 1px solid #dedede;
         box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
-        @include flex(flex, center, center);
 
-        .container {
-           @include flex(flex, center, center);
-           width: 100%;
+        .bottom__wrapper {
+            @include flex(flex, center, center);
+            height: 100%;
+
+            .container {
+                @include flex(flex, center, center);
+                width: 100%;
+            }
         }
-
 
         .header__bottom-left {
             @include flex(flex, space-between, center);
@@ -338,6 +345,7 @@
 
         .header__bottom-right {
             width: 50%;
+
             .nav-list {
                 height: 49px;
                 list-style: none;
@@ -383,16 +391,12 @@
         border-top: 1px solid transparent;
         transition: all .2s;
         box-shadow: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
         background: $color-blue;
+        
 
         .btn-catalog {
             background: rgba(255, 255, 255, 0.1) !important;
-            border: 1px solid transparent;
-
-            &:hover {
-                border: 1px solid $color-white;
-            }
         }
 
         .search-container {
@@ -434,7 +438,9 @@
         }
 
         .container {
+           
             .header__bottom-right {
+                
                 .header__nav {
                     .nav-list {
                         display: none;
@@ -445,25 +451,27 @@
 
     }
 
+    
+
+    //? ===================== header dropdown catalog ===============================
+
     .header__dropdown-catalog {
-        opacity: 0;
-        .container-grid {
-            display: none;
+        padding-top: 50px;
+        height: 100vh;
+
+        * {
+            opacity: 0;
         }
     }
-
     .header__dropdown-catalog.active {
-        position: absolute;
+        * {
+            opacity: 1;
+        }
         z-index: 999;
-        height: 100vh;
-        width: 100%;
         font-weight: 700;
-        padding-top: $header-top-bottom-height * 2 + 50px;
         transition: all .2s;
-        opacity: 1;
-       
         background: $color-blue;
-
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
         .container-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -500,11 +508,12 @@
             }
 
             .grid-item:nth-child(2) {
-               
+
                 background-image: url(https://dronov.ru/wp-content/themes/skydron/assets/img/c1.png);
             }
+
             .grid-item:nth-child(4) {
-                 background-image: url(https://dronov.ru/wp-content/themes/skydron/assets/img/c2.png);
+                background-image: url(https://dronov.ru/wp-content/themes/skydron/assets/img/c2.png);
             }
 
             .grid-list {
@@ -543,12 +552,14 @@
 
         .btn-wrapper {
             @include flex(flex, center, center);
+
             .btn-more {
                 color: $color-white;
                 border-radius: 50px 50px 50px 10px !important;
                 padding: 16px 27px;
                 background: rgba(255, 255, 255, 0.1);
                 transition: background .2s;
+
                 &:hover {
                     background: #06509f;
 
@@ -558,31 +569,3 @@
         }
     }
 }
-
-
-
-
-
-.modalWindow.active{
-    z-index: 100000000;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.318);
-    .modalWindow__inner {
-        width: 1000px;
-        height: 300px;
-        background:#fff;
-        text-align: center;
-        font-size: 30px;
-        text-transform: uppercase;
-    }
-}
-
-
-
